@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recurring_timer/features/home/home_controller.dart';
+import 'package:recurring_timer/features/timer/timer_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +22,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: controller.counterIncrease,
+        onPressed: () {
+          Get.to(const TimerScreen());
+        },
       ),
     );
   }
