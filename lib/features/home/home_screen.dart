@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
     final controller = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('Title'),
       ),
       body: Obx(
