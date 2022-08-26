@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:recurring_timer/bindings/app_bindings.dart';
 import 'package:recurring_timer/features/home/home_screen.dart';
 
 class App extends StatelessWidget {
@@ -11,6 +12,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.dark,
       theme: ThemeData.dark(),
       home: const HomeScreen(),
+      initialBinding: AppBinding(),
     );
   }
 }

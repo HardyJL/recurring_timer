@@ -1,51 +1,29 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:get/get.dart';
 
 class TimerController extends GetxController {
-  static const maxSeconds = 60;
-  var seconds = maxSeconds;
-  Timer? timer;
+  final time = 0.obs;
+  late double maxValue;
+  void initState(double maxValue) {
+    this.maxValue = maxValue;
+  }
 
-  /// Start Timer
-  void startTimer({bool rest = true}) {
-    if (rest) {
-      resetTimer();
-      update();
-    }
+  Timer? timer;
+  void startTimer() {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (seconds > 0) {
-        seconds--;
-        update();
+      if (time.value < maxValue) {
+        time.value += 1;
       } else {
-        stopTimer(rest: false);
-        resetTimer();
+        return;
       }
     });
   }
 
-  /// Stop Timer
-  void stopTimer({bool rest = true}) {
-    if (rest) {
-      resetTimer();
-      update();
+  void stopTimer() {
+    if (timer != null) {
+      timer!.cancel();
+      time.value = 0;
     }
-    timer?.cancel();
-    update();
-  }
-
-  /// Reset Timer
-  void resetTimer() {
-    seconds = maxSeconds;
-    update();
-  }
-
-  /// is Timer Active?
-  bool isTimerRuning() {
-    return timer == null ? false : timer!.isActive;
-  }
-
-  /// is Timer Completed?
-  bool isCompleted() {
-    return seconds == maxSeconds || seconds == 0;
   }
 }

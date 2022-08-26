@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(const TimerScreen());
+          Get.to(() => const TimerScreen());
         },
       ),
     );
